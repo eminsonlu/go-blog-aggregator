@@ -57,6 +57,8 @@ func main() {
 	serveMux.HandleFunc("POST /v1/feeds", config.middlewareAuth(config.handlerFeedCreate))
 	serveMux.HandleFunc("GET /v1/feeds", config.handlerGetAllFeeds)
 
+	serveMux.HandleFunc("POST /v1/feed_follows", config.middlewareAuth(config.handlerFeedFollowCreate))
+
 	log.Println("Server running on port", port)
 
 	err = server.ListenAndServe()
